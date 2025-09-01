@@ -28,12 +28,10 @@ public class ScheduleService {
         System.out.println("[cron5초] ScheduleService.task3");
     }
 
-    @Scheduled( cron = "0 */1 * * * *") // 1분마다
+    @Scheduled( cron = "0 */1 * * * *") // 현재시스템 시간이 00초 될때마다 , 예시] 12:21:00 , 12:22:00
     public void task4(){
         System.out.println("[cron1분]ScheduleService.task4");
     }
-
-
 
 } // class end
 
