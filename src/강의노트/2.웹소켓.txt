@@ -42,14 +42,16 @@
 
                     @Override
                     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-                        registry.addHandler( 서버웹소켓객체 , "경로");
+                        registry.addHandler( 서버웹소켓객체 , "ws경로주소정의");
                     }
             }
 
         4. 클라이언트 JS 웹 소켓 구현
+            주의할점 : 브라우저/JS 마다 클라이언트 웹 소켓(**세션저장소**)은 별도의 객체로 사용된다.
             1) 서버 웹소켓 경로 부터 클라이언트 웹소켓 구현
                 new WebSocket("ws웹소켓서버주소");
-                *WebSocketConfig 클래스 파일에서 정의한 주소를 확인
+                * WebSocketConfig 클래스 파일에서 정의한 주소를 확인
+                * F5(새로고침) 하거나 JS 실행되면 모든 JS의 객체는 초기화 , 즉] 클라이언트소켓 도 초기화
 
             2) 주요 클라이언트 웹소켓 메소드 오버라이딩
                 * event 매개변수는 각 이벤트의 정보가 있는 객체
