@@ -19,9 +19,24 @@ client.onclose = ( event  )=>{
 client.onerror = ( event ) =>{
     console.log( "[클라이언트] 서버소켓과 에러 발생")
 }
+
 // 2-4 : onmessage( ) : 서버 소켓으로 부터 메시지를 받았을때 
 client.onmessage = ( event ) =>{
     console.log( "[클라이언트] 서버로부터 메시지가 도착")
-}
+    console.log( event );       // 서버로부터 받은 이벤트 정보객체 
+    console.log( event.data );  // 이벤트정보객체내 data 속성내 메시지가 들어있다.
+    // 1) 서버로부터 받은 메시지를 HTML에 띄우기 
+    const msgbox = document.querySelector(".msgBox");
+    let html = `<div>${ event.data }</div>`
+    msgbox.innerHTML += html;
 
+} 
+
+// 2-5 : 전송 버튼을 클릭했을때 실행되는 메소드
+const onSend = async() =>{
+    // 1) 입력받은 값 가져오기 
+    const msg = document.querySelector('.msg').value; 
+    // 2) 클라이언트소켓과 연결된 서버소켓에게 메시지 보내기 
+    client.send( msg );
+}
 
