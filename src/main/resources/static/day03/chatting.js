@@ -70,6 +70,13 @@ client.onmessage = ( event ) => {
     // 4-4 구성한 html를 <div class="msgbox"> 에 추가하기 , 대입 = , 추가 +=
     document.querySelector(".msgbox").innerHTML += html;
 
+    // 4-5 만약에 <div class="msgbox"> 내 내용물이 고정 사이즈보다 커지면 자동 스크롤 내리기
+    const msgbox = document.querySelector(".msgbox");
+        // **** 현재 msgbox의 스크롤 (탑)위치를 가장 하단에 대입하기. 
+    msgbox.scrollTop = msgbox.scrollHeight
+    // DOM객체.scrollTop : 현재 dom(마크업)의 스크롤 상단 꼭지점 위치
+    // DOM객체.scrollHeight : 현재 dom(마크업)의 스크롤 전체 길이
+
 } // func end 
 
 //[5] 클라이언트 소켓이 서버에게 **일반** 메시지 보내기
