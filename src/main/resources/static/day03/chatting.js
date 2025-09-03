@@ -37,10 +37,36 @@ client.onmessage = ( event ) => {
     // 4-3 받은 메시지의 type를 확인하여 서로 다른 html 만들어주기.
     let html = ``
     if( message.type == 'alarm' ){
+
         html += `<div class="alarm">
                     <span> ${ message.message  } </span>
                 </div>`
-    }
+                
+    }else if( message.type == 'msg' ){
+        if( message.from == nickName ) {// *** 내가 보낸 메시지 ***
+            html += `<div class="secontent">
+                        <div class="date"> ${ message.date } </div>
+                        <div class="content"> ${ message.message } </div>
+                    </div>`
+
+        }else{// *** 남이 보낸 메시지 ***
+            html += `<div class="receiveBox">
+                        <div class="profileImg">
+                            <img  src="default.jpg"/>
+                        </div>
+                        <div>
+                            <div class="recontent">
+                                <div class="memberNic"> ${ message.from } </div>
+                                <div class="subcontent">
+                                    <div class="content"> ${ message.message } </div>
+                                    <div class="date"> ${ message.date } </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+        }
+    } // 4-3 end 
+
     // 4-4 구성한 html를 <div class="msgbox"> 에 추가하기 , 대입 = , 추가 +=
     document.querySelector(".msgbox").innerHTML += html;
 
@@ -48,6 +74,7 @@ client.onmessage = ( event ) => {
 
 //[5] 클라이언트 소켓이 서버에게 **일반** 메시지 보내기
 const onMsgSend = ( ) => {
+
     // 5-1. input 으로 부터 입력받은 값 가져오기 
     const msginput = document.querySelector('.msginput');
     const message = msginput.value;
@@ -61,13 +88,16 @@ const onMsgSend = ( ) => {
     client.send( JSON.stringify( msg ) ) // --> 자바의 ChatSocketHandler 클래스내 3-7 주석
     // 5-5 input 마크업 초기화 
     msginput.value = ''; 
+
 } // func end 
 
 //[6] <input class=" msginput"/> 에서 enter 입력 했을때
 const enterKey = ( ) => { // 만약에 input 에서 enter키를 눌렀을때 , keyCode에서는 enter가 13 이다.
+    
     if( window.event.keyCode == 13 ){ // keyCode : k소문자 C대문자 
         onMsgSend(); // [5]메시지함수 호출 
     }
+
 } // func end 
 
 
