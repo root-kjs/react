@@ -22,18 +22,6 @@ client.onopen = ( event ) => {
     client.send( JSON.stringify( msg ) );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // [3] 서버 웹 소켓과 연동 끊겼을때
 client.onclose = ( event )=> {
     console.log( "===========서버 소켓과 연동 끊겼다. ===========")
@@ -41,6 +29,19 @@ client.onclose = ( event )=> {
 
 // [4] 서버 웹 소켓으로 부터 메시지를 받았을떄
 client.onmessage = ( event ) => {
-    console.log( "===========서버 소켓으로부터 메시지를 받았다. ===========")
+    console.log( "===========서버 소켓으로부터 메시지를 받았다. ===========");
+    console.log( event ); // 해당 메소드가 왜 실행 되었는지 여러 정보가 들어있는 객체
+    console.log( event.data ); // 4-1 서버로부터 받은 메시지(data속성) 확인 
+    // 4-2 받은 메시지를 JSON타입으로 변환 
+    const message = JSON.parse( event.data );
+    // 4-3 받은 메시지의 type를 확인하여 서로 다른 html 만들어주기.
+    let html = ``
+    if( message.type == 'alarm' ){
+        html += `<div class="alarm">
+                    <span> ${ message.message  } </span>
+                </div>`
+    }
+    // 4-4 구성한 html를 <div class="msgbox"> 에 추가하기 , 대입 = , 추가 +=
+    document.querySelector(".msgbox").innerHTML += html;
 }
 
