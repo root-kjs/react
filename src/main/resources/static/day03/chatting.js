@@ -14,7 +14,7 @@ const client = new WebSocket("/chat"); // 자바의 WebSocketConfig 에서 정�
 // event 이란? 함수의 매개변수 이면서 *해당 이벤트 정보*를 담고 있는 객체
 client.onopen = ( event ) => { 
     console.log( "===========서버 소켓과 연동 성공했다. ===========")
-    // (1). ========= 방번호에 특정한 닉네임을 **등록하는** 메시지 보내기 =========
+    // (1). ========= 방번호에 특정한 닉네임을 **접속** 메시지 보내기 =========
     let msg = { type : "join" , room : room , nickName : nickName   } // JSON 형식으로 문자열 메시지 보내기
     // JSON.stringify( ) : 객체(JSON) 타입 를 형식을 유지하고 문자열 타입으로 변환 
     // JSON.parse( )     : 문자열 타입을 객체(JSON) 타입으로 변환 
@@ -43,5 +43,32 @@ client.onmessage = ( event ) => {
     }
     // 4-4 구성한 html를 <div class="msgbox"> 에 추가하기 , 대입 = , 추가 +=
     document.querySelector(".msgbox").innerHTML += html;
-}
+
+} // func end 
+
+//[5] 클라이언트 소켓이 서버에게 **일반** 메시지 보내기
+const onMsgSend = ( ) => {
+    // 5-1. input 으로 부터 입력받은 값 가져오기 
+    const msginput = document.querySelector('.msginput');
+    const message = msginput.value;
+    if( message == '' ) return // 5-2. 만약에 입력 값 이 없으면 종료
+    // 5-3. 메시지 구성하기 
+    const msg = { 
+        type : 'msg'    , message : message , // type:메시지종류(msg/join/alarm) , message:메시지내용물 , 
+        from : nickName , date : new Date().toLocaleString() // from:보낸사람 , date : 현재날짜/시간
+    }
+    // 5-4 클라이언트소켓이 서버에게 구성한 메시지를 보내기 
+    client.send( JSON.stringify( msg ) ) // --> 자바의 ChatSocketHandler 클래스내 3-7 주석
+    // 5-5 input 마크업 초기화 
+    msginput.value = ''; 
+} // func end 
+
+//[6] <input class=" msginput"/> 에서 enter 입력 했을때
+const enterKey = ( ) => { // 만약에 input 에서 enter키를 눌렀을때 , keyCode에서는 enter가 13 이다.
+    if( window.event.keyCode == 13 ){ // keyCode : k소문자 C대문자 
+        onMsgSend(); // [5]메시지함수 호출 
+    }
+} // func end 
+
+
 

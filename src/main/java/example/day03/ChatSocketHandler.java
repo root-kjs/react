@@ -82,8 +82,18 @@ public class ChatSocketHandler extends TextWebSocketHandler {
             alarmMessage( room , nickName+"이 입장 했습니다.");
 
         } // 3-3 end
+        // 3-7 : 만약에 메시지에서 타입(type) 이 'msg' 이면
+        else if( msg.get("type").equals("msg") ){
+            // 3-8 : 메시지를 보낸 세션의 방번호 확인
+            String room = (String)session.getAttributes().get("room");
+            // 3-9 : 메시지를 보낸 세션의 같은방 번호의 목록들에게 메시지 보내기
+            for( WebSocketSession client : 접속명단.get( room ) ){
+                client.sendMessage( message ); // 서버가 받은 메시지를 클라이언트들에게 다시 전달
+            } // for end
+        } // 3-7 end
 
         System.out.println( 접속명단 ); // 확인
+
     } // func end
 
 
