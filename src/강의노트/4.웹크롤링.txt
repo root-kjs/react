@@ -26,6 +26,32 @@
         2) Jsoup Java HTML Parser
         3) implementation 'org.jsoup:jsoup:1.21.2'
 
+    2. 주요 메소드
+        1) 크롤링할 웹주소의 HTML를 자바의 Document 객체로 가져오기
+            Document document = Jsoup.connect( 크롤링할웹주소 ).get()
+
+        2) 특정한 마크업(요소) 가져오기 , 1개일때 : Element / N개일때 : Elements
+           Element element = document.select( "css선택자" );
+                예] <a href=""> 부평역 </a>
+           Elements elements = document.select( "css선택자" );
+                예] [ <a href=""> 부평역 </a>   , <a href=""> 부천역 </a>
+
+        3) 마크업(요소)의 데이터 가져오기
+            String text = element.text();
+                예] <a href=""> 부평역 </a> ---> 부평역
+        4) 마크업(요소)의 속성값 가져오기
+            String attr = element.attr("속성명");
+                예] <img src="localhost:8080"/> ----> localhost:8080
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -7,7 +7,9 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CrawlingService {
@@ -34,6 +36,33 @@ public class CrawlingService {
         }catch (Exception e ){ System.out.println("e = " + e); }
         return list;
     } // func end
+
+    // 2. 상품 정보 : 예스24 , https://www.yes24.com/robots.txt
+    public List<Map<String,String> > task2(){
+        List< Map<String,String> > list = new ArrayList<>(); // 2-1 : 책 정보들을 담을 리스트 선언
+        try{ // 2-2 : 웹크롤링할 주소
+            String URL = "https://www.yes24.com/product/category/daybestseller?categoryNumber=001&pageNumber=1&pageSize=24&type=day";
+            // 2-3 : JSOUP 활용한 지정한 주소 HTML로 가져오기
+            Document document = Jsoup.connect( URL ).get();
+            // 2-4 : 책제목( .info_name > .gd_name )  과 책가격( .info_price > .txt_num > .yes_b )
+            Elements nameList = document.select( ".info_name > .gd_name" );
+            Elements priceList = document.select( ".info_price > .txt_num > .yes_b");
+            Elements imgList = document.select( ".img_bdr .lazy");
+            // 2-5 : 반복문을 이용한 책정보 구성
+            for( int i = 0 ; i < nameList.size() ; i++ ){
+                String name = nameList.get( i ).text(); // i번째 책제목 1개씩 호출
+                String price = priceList.get( i ).text(); // i번째 책가격 1개씩 호출
+                String img = imgList.get( i ).attr( "data-original"); // i번째 책이미지(링크) 속성값 1개씩 호출
+                Map<String,String> map = new HashMap<>();
+                map.put( "name" , name );
+                map.put( "price" , price ); // MAP객체생성 VS DTO
+                map.put( "img" , img );
+                list.add( map );
+            }
+        } catch (Exception e) { System.out.println("e = " + e); }
+        return list; // 리스트 반환 end
+    } // func end
+
 } // class end
 
 
