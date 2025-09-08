@@ -16,6 +16,7 @@ public class CrawlingController {
     CrawlingService crawlingService;
 
     // 1. 뉴스 크롤링
+    // http://localhost:8080/task/day04/craw1
     @GetMapping("/craw1")
     public List<String> task1(){
         return crawlingService.task1();
