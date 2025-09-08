@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Service
 public class CrawlingService {
+
     // 1. 뉴스 크롤링 https://www.karnews.or.kr/
     public List<String> task1(){
         List<String> list = new ArrayList<>(); // 크롤링한 제목들을 담을 리스트
@@ -68,6 +69,22 @@ public class CrawlingService {
         } catch (Exception e) { System.out.println("e = " + e); }
         return list; // 리스트 반환 end
     } // func end
+
+    // 3. 다음날씨 정보 https://weather.daum.net/robots.txt ***** 동적 페이지 JSOUP 안된다. --> 방안 : 셀레니움 *****
+    public Map<String,String> task3(){
+        Map<String,String> map = new HashMap<>(); // 3-1 날씨 정보를 저장할 맵
+        try{
+            String URL ="https://weather.daum.net/"; // 3-2 날씨 정보를 가져올(크롤링) 주소
+            Document document = Jsoup.connect( URL ).get(); // 3-3 JSOUP 활용한 지정한 주소 HTML로 가져오기
+            System.out.println("document = " + document);
+
+            Elements elements = document.select(".info_weather .num_deg");// 3-4 온도( .info_weather .num_deg )
+            // 즉] : 'info_weather' 마크업은 JS가 데이터를 표시하는 방법이므로 크롤링 불가능
+            System.out.println("elements = " + elements);
+
+        } catch (Exception e) { System.out.println("e = " + e); }
+        return map;
+    }
 
 } // class end
 
