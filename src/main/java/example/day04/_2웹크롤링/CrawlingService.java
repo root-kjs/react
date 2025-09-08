@@ -70,7 +70,7 @@ public class CrawlingService {
         return list; // 리스트 반환 end
     } // func end
 
-    // 3. 다음날씨 정보 https://weather.daum.net/robots.txt ***** 동적 페이지 JSOUP 안된다. --> 방안 : 셀레니움 *****
+    // 3. 실행불가능=(JSOUP 한계를 보여주는예제) 다음날씨 정보 https://weather.daum.net/robots.txt ***** 동적 페이지 JSOUP 안된다. --> 방안 : 셀레니움 *****
     public Map<String,String> task3(){
         Map<String,String> map = new HashMap<>(); // 3-1 날씨 정보를 저장할 맵
         try{
