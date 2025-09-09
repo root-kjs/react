@@ -13,10 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service // 스프링이 컨테이너(메모리) 빈(객체) IOC
 public class CrawlingService {
@@ -80,11 +77,12 @@ public class CrawlingService {
             // 2-6 : 리뷰( .reveiwCard_txt__RrTgu ) 를 여러개 가져오기
             // 1개 : WebElement element = webDriver.findElement( );
             // N개 : List<WebElement> elements = webDriver.findElements( );
-            List<WebElement> webElements
-                    = webDriver.findElements(By.cssSelector(".reveiwCard_txt__RrTgu")); //
+            List<WebElement> webElements = webDriver.findElements(By.cssSelector(".reveiwCard_txt__RrTgu")); //
             // 2-7 : 가져온 리뷰들을 리스트에 담아보기
             int startCount = list.size();
+            System.out.println("startCount = " + startCount);
             for (WebElement element : webElements) { // 여러개 리뷰 요소들을 하나씩 조회
+                System.out.println("element = " + element);
                 String text = element.getText(); // 현재 조회중인 요소의 텍스트(리뷰) 가져오기
                 if( list.contains( text ) ){// [중복방지] **만약에 스크롤 내리고 리스트내 앞전의 리뷰가 포함되면 생략/패스**
                     continue; // 가장 가까운 반복문으로 이동 -> 2-7
@@ -93,14 +91,15 @@ public class CrawlingService {
             }
             // ** 만약에 비어있거나 list에 추가적인 내용이 없으면
             int endCount = list.size(); // 크롤링 데이터 변화가 없으면
-            if( startCount == endCount ) break; //2-9 반복문 종료
+            System.out.println("endCount = " + endCount);
+            if( startCount == endCount ) {break;} //2-9 반복문 종료
 
             // ============= 자바에서 JS 사용 : 스크롤을 내리는 작업 =================== //
             // 2-8 : 자바스크립트 조작하는 객체 , 셀레니움객체를 자바스크립트실행객체로 변환
             JavascriptExecutor js = (JavascriptExecutor) webDriver;
             // document.body( 화면 ) 에서 최하단으로 스크롤 이동
             js.executeScript("window.scrollTo( 0 , document.body.scrollHeight ); ");
-            try { Thread.sleep(1000); } catch (Exception e) {}  // 1초 대기
+            try { Thread.sleep( 1000 ); } catch (Exception e) {}  // 1초 대기
         }
         return list;
     } // func end
