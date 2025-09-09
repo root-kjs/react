@@ -75,18 +75,26 @@ public class CrawlingService {
         webDriver.get( URL );
 
         List<String> list = new ArrayList<>();
-        // ============= 아래 작업들을 N번 반복 =============//
-        for( int i = 1 ; i<=5 ; i++ ) {
+        // 2-9 ============= 아래 작업들을 N번 반복 =============//
+        for( int i = 1 ; i<=10 ; i++ ) {
             // 2-6 : 리뷰( .reveiwCard_txt__RrTgu ) 를 여러개 가져오기
             // 1개 : WebElement element = webDriver.findElement( );
             // N개 : List<WebElement> elements = webDriver.findElements( );
             List<WebElement> webElements
-                    = webDriver.findElements(By.cssSelector(".reveiwCard_txt__RrTgu"));
+                    = webDriver.findElements(By.cssSelector(".reveiwCard_txt__RrTgu")); //
             // 2-7 : 가져온 리뷰들을 리스트에 담아보기
+            int startCount = list.size();
             for (WebElement element : webElements) { // 여러개 리뷰 요소들을 하나씩 조회
                 String text = element.getText(); // 현재 조회중인 요소의 텍스트(리뷰) 가져오기
+                if( list.contains( text ) ){// [중복방지] **만약에 스크롤 내리고 리스트내 앞전의 리뷰가 포함되면 생략/패스**
+                    continue; // 가장 가까운 반복문으로 이동 -> 2-7
+                }
                 list.add(text);
             }
+            // ** 만약에 비어있거나 list에 추가적인 내용이 없으면 2-9 반복문 종료
+            int endCount = list.size();
+            if( startCount == endCount ) break;
+
             // ============= 자바에서 JS 사용 : 스크롤을 내리는 작업 =================== //
             // 2-8 : 자바스크립트 조작하는 객체 , 셀레니움객체를 자바스크립트실행객체로 변환
             JavascriptExecutor js = (JavascriptExecutor) webDriver;
