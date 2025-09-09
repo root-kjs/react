@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service // 스프링이 컨테이너(메모리) 빈(객체) IOC
@@ -37,21 +38,19 @@ public class CrawlingService {
         // 1-7 : 대기후 크롤링할 HTML CSS 선택자 분석하기 , 권장: 식별자가 1개가 아닌 상위 식별자를 넣어서 중복방지
             // wait.until(ExpectedConditions.presenceOfElementLocated(  By.cssSelector( 크롤링할CSS선택자 ) ));
             // (1) 지역 , .info_location .tit_location        , 자손선택자: 식별자1 식별자2 , 자식선택자 : 식별자1 > 식별자2
-        WebElement location
-                = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector( ".info_location .tit_location" )));
-        System.out.println("location = " + location);
-
+        WebElement location = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector( ".info_location .tit_location" )));
             // (2) 온도 , .wrap_weather .num_deg
-        WebElement temp =
-                wait.until(ExpectedConditions.presenceOfElementLocated( By.cssSelector( ".wrap_weather .num_deg" ) ));
-        System.out.println("temp = " + temp); // soutv
-
+        WebElement temp = wait.until(ExpectedConditions.presenceOfElementLocated( By.cssSelector( ".wrap_weather .num_deg" ) ));
             // (3) 상태 , .wrap_weather .txt_sub
-        WebElement status =
-            wait.until(ExpectedConditions.presenceOfElementLocated( By.cssSelector( ".wrap_weather .txt_sub" ) ));
-        System.out.println("status = " + status);
+        WebElement status = wait.until(ExpectedConditions.presenceOfElementLocated( By.cssSelector( ".wrap_weather .txt_sub" ) ));
 
-        return null; // 반환
+        // 1-8 : 크롤링한 요소(HTML마크업)의 텍스트를 추출하여 map/dto 저장
+        Map<String , String > map = new HashMap<>();
+        map.put( "위치" , location.getText() ); // .put( "key" , value );
+        map.put( "온도" , temp.getText() );
+        map.put( "상태" , status.getText() );
+
+        return map; // 반환
     }
 
 }
