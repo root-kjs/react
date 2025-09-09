@@ -34,11 +34,11 @@ public class CrawlingService {
         // 1-6 : 셀레니움(웹드라이버) 잠시 대기 , new WebDriverWait( 셀레니움객체 , Duration.ofSeconds( 초 )  );
             // * 왜? 대기하나요? 동적페이지는 JS(fetch)가 정보를 가져올때까지 정보가 없으므로 기다린다.
         WebDriverWait wait = new WebDriverWait( webDriver , Duration.ofSeconds( 3 ) );
-        // 1-7 : 대기후 크롤링할 HTML CSS 식별하기 분석하기 , 권장: 식별자가 1개가 아닌 상위 식별자를 넣어서 중복방지
+        // 1-7 : 대기후 크롤링할 HTML CSS 선택자 분석하기 , 권장: 식별자가 1개가 아닌 상위 식별자를 넣어서 중복방지
             // wait.until(ExpectedConditions.presenceOfElementLocated(  By.cssSelector( 크롤링할CSS선택자 ) ));
             // (1) 지역 , .info_location .tit_location        , 자손선택자: 식별자1 식별자2 , 자식선택자 : 식별자1 > 식별자2
         WebElement location
-                = wait.until(ExpectedConditions.presenceOfElementLocated( By.cssSelector( ".info_location .tit_location" )  ));
+                = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector( ".info_location .tit_location" )));
         System.out.println("location = " + location);
 
             // (2) 온도 , .wrap_weather .num_deg
