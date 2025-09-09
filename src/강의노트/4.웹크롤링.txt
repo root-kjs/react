@@ -43,12 +43,14 @@
             String attr = element.attr("속성명");
                 예] <img src="localhost:8080"/> ----> localhost:8080
 
-[ Selenium ]
+[ Selenium + 크롬 ]
     1. 그레이들 설치 , https://mvnrepository.com/
         1) 'Selenium' 검색
-        2) Selenium Java » 4.35.0
-        3) implementation 'org.seleniumhq.selenium:selenium-java:4.35.0'
-
+            2) Selenium Java » 4.35.0
+            3) implementation 'org.seleniumhq.selenium:selenium-java:4.35.0'
+        2) 'webdrivermanager' 검색
+            2) WebDriverManager » 6.3.1
+            3) implementation 'io.github.bonigarcia:webdrivermanager:6.3.1'
 
 
 
