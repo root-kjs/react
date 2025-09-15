@@ -43,54 +43,60 @@ let newArray = array.map( (value) => { console.log( value ); return value;  } )
 // ** filter ** : 조건부 return 가능하다.  
 let newArray2 = array.filter( (value) => { console.log( value ); return value > 20; })
 
+// [5] 함수 : 
+function fun1( param1 , param2 ){ } // 5-1 선언적 함수 선언
+const fun2 = function( param1 , param2 ){ } // 5-2 익명 함수 선언
+const fun3 = ( param1 , param2 ) => { } // 5-3 화살표 함수 선언
+const fun4 = ( param1 , param2 = "강호동" ) => { } // 5-4 : 매개변수의 기본값 
 
+fun1( 4 , 10 ) // 함수 호출 
+fun2( 10 , "유재석" ); // 함수 호출 
+fun3( 10 , { name : "유재석" } ); // 함수 호출 
+fun4( 10 );
 
+// [6] 객체 : 여러개의 값을 가진 (하나의)값 
+// 변수/상수 는 값을 저장하는 상징적인 이름
+const obj1 = { name : "유재석" , age : 40 }
+const name2 = "강호동";
+const age2 = 50;
+const obj2 = { name2 , age2 }; // key 와 value의 변수명이 같으면 key 생략가능
+const obj3 = [ "유재석" , 40 ]
+console.log( obj1.name )
+console.log( obj3[0] );
+// *** 스프레드 연산자 : ... 배열이나 객체를 복사 할때 사용 , 왜? 주소값 변경 목적 **
+const obj4 = { ...obj1 , phone : "010"}; console.log( obj4 );
+const obj5 = [ ...obj3 ]; console.log( obj5 ); // 값의 차이가 없지만 새로운 주소값으로 복사
+const obj6 = [ 6 , 7 , ...obj3 ]; console.log( obj6 );
 
+// [7] 구조 분해 할당 : 객체나 배열에서 값을 분해 하는 방법
+const user = { name : "유재석" , age : 40 }
+const { name , age } = user;  // 객체내 key(속성명) 과 동일하게 상수/변수를 선언하면 분해 가능하다.
+console.log( name );    
+console.log( age );
 
+// [8] 비구조화 할당 과 나머지 연산자 
+const [ num , ...intArray ]  = [ 1 , 2 , 3 , 4]
+console.log( num ); // 순서대로(인덱스) 분해후 나머지는 ...에 저장한다.
+console.log( intArray ); 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// [9] async/await 동기화
+    // 1. 비동기 , fetch , fetch 함수는 원래 비동기 래퍼( new Promise ) 이다. 
+const method1 = ( ) => {
+    mefetch( "url" )
+    .then( response => response.json() )
+    .then( data => console.log( data ) );
+}
+    // 2. 동기 , fetch 
+const method2 = async ( ) => {
+    const response = await fetch( "url");
+    const data = await response.json();
+    console.log( data );
+}
+    // ******** Promise : await은 proimise 를 사용하는 함수들에 적용된다. ********
+const promiseFunc = ( ) => {
+    return  new Promise( ( resolve , reject ) => { // resolve : 성공매개변수 , reject: 실패매개변수
+        if( 10 > 13 ){ resolve(" 10이 13보다 크다"); }
+        else{ reject(" 10이 13보다 작다. "); }
+    } )
+}
 
