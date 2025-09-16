@@ -13,8 +13,8 @@ public interface BatisMapper {
     // mybatis : insert into student( name , koe , math)values( #{ 매개변수 } , #{ 매개변수 } , #{ 매개변수 } );
     @Insert("insert into student(name,kor,math)" +
             " values( #{name} , #{kor} , #{math} )" )
-    int save( StudentDto studentDto ); // 추상메소드
-    // int : insert 된 레코드 수 반환 1:성공 0:실패
+    int save( StudentDto studentDto ); // 반환타입 추상메소드
+    // int : insert 된 레코드 수 반환 1:성공 0:실패 ==? 자동 매핑 해줌
 
     // 2. 전체 학생 조회
     @Select("select * from student")
