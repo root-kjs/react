@@ -5,6 +5,8 @@ import example.h_shopping.model.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -17,7 +19,13 @@ public class MemberService {
     }// f end
 
     // 2. 회원 전체 목록
+    public List<MemberDto> memberList(){
+        return memberDao.memberList();
+    }
 
     // 3. 회원 정보 수정
+    public boolean updateMember( MemberDto memberDto ){
+        return memberDao.updateMember( memberDto );
+    }
 
 }//class end
