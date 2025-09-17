@@ -1,0 +1,20 @@
+*{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; }
+body{ background-color: #eee; }
+
+header{ background-color: rgb(52, 110, 210);  color: white; text-align: center; }
+header h1{ padding: 10px 0; font-size: 20px; }
+
+nav {background-color: rgb(73, 78, 222); padding: 10px 0; margin-top: 10px; }
+nav ul{ list-style: none; padding: 0; display: flex; justify-content: center; }
+nav ul li{ display: inline; margin-right: 10px; padding: 1px 10px; }
+nav ul li a{ color: white; text-decoration: none; }
+
+.container{ max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #eee; min-height: 700px; }
+.container h2{ text-align: center; margin-bottom: 20px; }
+
+footer{ background-color: rgb(52, 110, 210); color: white; text-align: center; padding: 20px 0;  }
+
+table{ min-width: 600px; border-collapse: collapse; margin-bottom: 20px; border: 1px solid #ccc; margin: 0 auto; }
+table, th, td{ border: 1px solid #ccc; padding: 8px; background-color: #fafafa; }
+td[colspan]{ text-align: center; margin: 0 auto; }
+button{ padding: 3px 15px; cursor: pointer; font-size: 16px; border-radius: 4px; border: solid 1px #ccc;  }
