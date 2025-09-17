@@ -39,6 +39,11 @@ import Component2 from './exam/d1/Component2.jsx';
 import Component3 from './exam/d1/Component3.jsx';
 import Task1 from './exam/d1/Task1.jsx';
 import Task2 from './exam/d1/Task2.jsx';
+import Component4 from './exam/d2/Component4.jsx';
+import Component5 from './exam/d2/Component5.jsx';
+import Component6 from './exam/d2/Component6.jsx';
+import Component7 from './exam/d2/Component7.jsx';
+
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
 // create.render( <Component1> </Component1> )
@@ -46,7 +51,12 @@ import Task2 from './exam/d1/Task2.jsx';
 // create.render(<Component2/>)
 // create.render(<Component3/>)
 // create.render(<Task1/>)
-create.render(<Task2/>)
+// create.render(<Task2/>)
+// day 02
+// create.render(<Component4/>)
+// create.render(<Component5/>)
+// create.render(<Component6/>)
+create.render(<Component7/>)
 
 
 
