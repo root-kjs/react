@@ -50,12 +50,12 @@ export default function Component7( props ){
     <h3>useState 예제2 : { array }</h3>
     <button onClick={ arrayAdd }> 과일 추가 </button>
 
-    <h3>useState 예제3-1 : 인풋값 : 별도로 함수 정의</h3>
+    <h3>useState 예제3-1 : 인풋값 : 별도로 함수 정의 { data } </h3>
     {/* 인풋 초기값을 넣으면 수정이 안됨  <input value="유재석"/> */}
     {/* 입력값은 불변이라 아예 입력이 안됨. */}
     <input value={ data } onChange = { dataAdd }/> 
 
-    <h3>useState 예제3-2 : 바로 함수 정의</h3>
+    <h3>useState 예제3-2 : 바로 함수 정의{ data } </h3>
     {/* 인풋 초기값을 넣으면 수정이 안됨  <input value="유재석"/> */}
     {/* 입력값은 불변이라 아예 입력이 안됨. */}
     <input value={ data } onChange = { (e)=>{ setData(e.target.value)} }/> 

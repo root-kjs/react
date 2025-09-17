@@ -17,7 +17,7 @@ export default function Component5( props ){
     return(<>
         <h3> jsx 반복문 : forEach(리턴 X) vs Map(리턴 O)  </h3>
         {/* map을 사용하여 태그를 리턴으로 반복 돌려준다. */}
-        <ul>{ items.map( (item) => { <li>{item}</li>} ) }</ul>
+        <ul>{ items.map( (item) => { return <li>{item}</li>} ) }</ul>
 
         {/* 리액트는 가상이다. 리액트는 onClick = {  함수명 }  */}
         1. 순수 js방식(작동X) <button onclick="onAdd()"> item 추가 </button> 

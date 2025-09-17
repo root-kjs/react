@@ -43,6 +43,8 @@ import Component4 from './exam/d2/Component4.jsx';
 import Component5 from './exam/d2/Component5.jsx';
 import Component6 from './exam/d2/Component6.jsx';
 import Component7 from './exam/d2/Component7.jsx';
+import Task3 from './exam/d2/Task3.jsx';
+import Task4 from './exam/d2/Task4.jsx';
 
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
@@ -56,7 +58,9 @@ import Component7 from './exam/d2/Component7.jsx';
 // create.render(<Component4/>)
 // create.render(<Component5/>)
 // create.render(<Component6/>)
-create.render(<Component7/>)
+// create.render(<Component7/>)
+// create.render(<Task3/>)
+create.render(<Task4/>)
 
 
 
