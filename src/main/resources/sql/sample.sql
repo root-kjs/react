@@ -1,4 +1,4 @@
-"DROP DATABASE IF EXISTS springweb2;
+DROP DATABASE IF EXISTS springweb2;
 CREATE DATABASE springweb2;
 USE springweb2;
 
@@ -82,4 +82,4 @@ INSERT INTO board (bcontent, bwriter) VALUES ('헬스장 다녀왔어요', '제�
 INSERT INTO board (bcontent, bwriter) VALUES ('오늘도 화이팅!', '리사');
 INSERT INTO board (bcontent, bwriter) VALUES ('운전 조심하세요~', '태연');
 
-select * from board;"
+select * from board;

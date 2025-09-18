@@ -25,8 +25,8 @@ export default function Task4( props ){
             tel : tel,
             age : age
         };
-        // 2) 새로운 유저 객체를 배열에 스프레드? 넣어줌
-        setArray([...array, newUser]);
+        // 2) 새로운 유저 객체를 배열에 (...)스프레드 연산자 넣어줌, 참조값은 ...쓴다. 
+        setArray([...array, newUser]); // 리스트를 재렌더링
         setName('');
         setTel('');
         setAge('');
@@ -36,7 +36,14 @@ export default function Task4( props ){
      // 5. 기존 유저 삭제
     const deleteUser = ( deleteTel ) => {
         const updateArray = array.filter( user => user.tel !== deleteTel ); 
-        setArray( updateArray ); 
+        setArray( updateArray ); // 기존 데이터 유지!!!!!!!
+
+        // const newMember = array.map( (m) => {
+        //     if( m.tel != deleteTel ) return m;
+        // })
+
+        // setArray( newMember ); 
+
     } 
 
     // 5. html 출력
@@ -52,7 +59,7 @@ export default function Task4( props ){
         <ul>
             { array.map( (user) => { return <li> 
                 성명 : { user.name } 연락처: { user.tel } 나이:{ user.age } 
-                <button onClick={()=>deleteUser(user.tel)}>삭제</button>
+                <button onClick={()=>deleteUser(user.tel)}>삭제</button>  {/* 매개변수가 있는 함수 정의(생성) */}
                 </li> 
             })} 
         </ul>

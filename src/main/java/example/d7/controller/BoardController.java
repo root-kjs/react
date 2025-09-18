@@ -11,10 +11,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/board")
 @RequiredArgsConstructor
+// CORS(서로 다른 서버간의 오ㅗ러요청/응답 허용) 정책을 설정 와일드카드는(*) 다 허용
+@CrossOrigin( value = "http://localhost:5173") // 리액트서버와 CORS통신을 허용
 public class BoardController {
 
     private final BoardService boardService;
 
+    // [1] 게시물 등록
     @PostMapping // localhost:8080/board
     public ResponseEntity<Boolean> boardWrite( @RequestBody BoardDto boardDto ){
         boolean result = boardService.boardWrite( boardDto ); // 서비스 호출 하고 응답을 반환
