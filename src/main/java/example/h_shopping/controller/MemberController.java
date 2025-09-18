@@ -15,7 +15,7 @@ public class MemberController {
     private final MemberService memberService;
 
     // 1. 회원 등록
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public int signUp( @RequestBody MemberDto memberDto ){
         System.out.println("memberDto = " + memberDto);
         return memberService.signUp( memberDto );
@@ -39,6 +39,12 @@ public class MemberController {
     @PutMapping("/update")
     public boolean updateMember( @RequestBody MemberDto memberDto ){
         return memberService.updateMember( memberDto );
+    }
+
+    // 4. 특정한 필드/열/컬럼 의 값 중복/존재 확인
+    @GetMapping("/check")
+    public boolean check( @RequestParam String type , String data ) {
+        return memberService.check( type , data );
     }
 
 }// class end

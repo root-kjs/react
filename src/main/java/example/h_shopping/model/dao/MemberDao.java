@@ -33,7 +33,7 @@ public class MemberDao extends DBDao { // JDBC 연동 상속받기
             System.out.println("[회원등록 Dao] e = " + e);
         }
         return 0;
-    }// f e
+    }// f end
     
     // 2. 회원 전체 목록
     public List<MemberDto> memberList(){
@@ -58,7 +58,7 @@ public class MemberDao extends DBDao { // JDBC 연동 상속받기
             System.out.println("[회원목록 Dao] e = " + e);
         }
         return null;
-    }// f e
+    }// f end
 
     // 3. 회원 정보 수정
     public boolean updateMember( MemberDto memberDto ){
@@ -77,6 +77,20 @@ public class MemberDao extends DBDao { // JDBC 연동 상속받기
             System.out.println("[회원수정 Dao]e = " + e);
         }
         return false;
-    }// f e
+    }// f end
+
+    // 4. 특정한 필드/열/컬럼 의 값 중복/존재 확인
+    public boolean check( String type , String data ){
+        try{
+            // String sql = "select * from member where mid = ? ";
+            // String sql = "select * from member where mphone = ? ";
+            String sql = "select * from member where "+type+" = ? "; // + 앞뒤로 띄어쓰기 주의!
+            PreparedStatement ps = conn.prepareStatement( sql );
+            ps.setString( 1 , data );
+            ResultSet rs = ps.executeQuery();
+            if( rs.next() ){ return true; } // 중복이면 true
+        }catch (Exception e ){ System.out.println(e);   }
+        return false; // 중복이 아니면 false
+    }
 
 }// class end

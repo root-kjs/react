@@ -28,4 +28,9 @@ public class MemberService {
         return memberDao.updateMember( memberDto );
     }
 
+    // 4. 특정한 필드/열/컬럼 의 값 중복/존재 확인
+    public boolean check( String type , String data ) {
+        return memberDao.check( type , data );
+    }
+
 }//class end
