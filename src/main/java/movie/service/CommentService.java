@@ -23,8 +23,8 @@ public class CommentService {
     }//f end
 
     // 3. 특정 영화 > 댓글 전체 조회
-    public List<CommentDto> printComment(){
-        return commentMapper.printComment();
+    public List<CommentDto> printComment(int mno){
+        return commentMapper.printComment( mno );
     }//f end
 
 }//class end

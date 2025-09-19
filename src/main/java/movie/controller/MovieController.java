@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/movie")
 @RequiredArgsConstructor
+@CrossOrigin( value = "http://localhost:5173" ) // 리액트서버와 CORS통신(서로 다른 서버간의 요청/응답) 허용
 public class MovieController {
     private final MovieService movieService;
 

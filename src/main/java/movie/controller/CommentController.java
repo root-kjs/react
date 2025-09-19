@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/comment")
+@CrossOrigin( value = "http://localhost:5173" ) // 리액트서버와 CORS통신(서로 다른 서버간의 요청/응답) 허용
 public class CommentController {
 
     private final CommentService commentService;
@@ -28,8 +29,8 @@ public class CommentController {
 
     // 3. 특정 영화 > 댓글 전체 조회
     @GetMapping
-    public List<CommentDto> printComment(){
-        return commentService.printComment();
+    public List<CommentDto> printComment( @RequestParam int mno ){
+        return commentService.printComment( mno );
     }//f end
 
 }//class end

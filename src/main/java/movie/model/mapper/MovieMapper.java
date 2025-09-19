@@ -19,7 +19,7 @@ public interface MovieMapper {
     public boolean deleteMovie( int mno );
 
     // 3. 영화 목록 조회
-    @Select("select * from movie")
+    @Select("select * from movie ORDER BY mno DESC")
     public List<MovieDto> printMovie();
 
 }//interface end
