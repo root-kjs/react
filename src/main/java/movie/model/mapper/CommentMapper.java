@@ -19,7 +19,7 @@ public interface CommentMapper {
     public boolean deleteComment( int cno );
 
     // 3. 특정 영화 > 댓글 전체 조회
-    @Select("select * from Comment")
+    @Select("select * from comment_movie")
     public List<CommentDto> printComment();
 
 }//interface end
