@@ -51,6 +51,7 @@ import Component10 from './exam/d3/Component10.jsx';
 import Movie from './movie/Movie.jsx';  // 영화 api
 import Component11 from './exam/d4/Component11.jsx'; // useRef
 import Component12 from './exam/d4/Component12.jsx'; // 라우터
+import Task6 from './exam/d4/Task6.jsx'; // 실습/회원가입/로그인/라우터
 
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
@@ -71,8 +72,10 @@ import Component12 from './exam/d4/Component12.jsx'; // 라우터
 // create.render(<Component9/>)
 //create.render(<Component10/>)
 // create.render(<Movie/>)
+// day 04
 // create.render(<Component11/>)
-create.render(<Component12/>)
+// create.render(<Component12/>)
+create.render(<Task6/>)
 
 
 
