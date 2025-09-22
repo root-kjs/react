@@ -46,11 +46,11 @@ import Component7 from './exam/d2/Component7.jsx';
 import Task3 from './exam/d2/Task3.jsx';
 import Task4 from './exam/d2/Task4.jsx';
 import Component8 from './exam/d3/Component8.jsx';
-import Component9 from './exam/d3/Component9.jsx';
-import Component10 from './exam/d3/Component10.jsx';
-import Movie from './movie/Movie.jsx';
-import Component11 from './exam/d4/Component11.jsx';
-import Component12 from './exam/d4/Component12.jsx';
+import Component9 from './exam/d3/Component9.jsx';  
+import Component10 from './exam/d3/Component10.jsx'; 
+import Movie from './movie/Movie.jsx';  // 영화 api
+import Component11 from './exam/d4/Component11.jsx'; // useRef
+import Component12 from './exam/d4/Component12.jsx'; // 라우터
 
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
