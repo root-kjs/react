@@ -49,6 +49,8 @@ import Component8 from './exam/d3/Component8.jsx';
 import Component9 from './exam/d3/Component9.jsx';
 import Component10 from './exam/d3/Component10.jsx';
 import Movie from './movie/Movie.jsx';
+import Component11 from './exam/d4/Component11.jsx';
+import Component12 from './exam/d4/Component12.jsx';
 
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
@@ -68,7 +70,10 @@ import Movie from './movie/Movie.jsx';
 // create.render(<Component8/>)
 // create.render(<Component9/>)
 //create.render(<Component10/>)
-create.render(<Movie/>)
+// create.render(<Movie/>)
+// create.render(<Component11/>)
+create.render(<Component12/>)
+
 
 
 
