@@ -34,25 +34,25 @@ const create = createRoot( root );
 // root.innerHTML = html;
 
 // d1 ---> 원하는 컴포넌트를 경로 파일 호출! 
-import Component1 from './exam/d1/Component1.jsx';
-import Component2 from './exam/d1/Component2.jsx';
-import Component3 from './exam/d1/Component3.jsx';
-import Task1 from './exam/d1/Task1.jsx';
-import Task2 from './exam/d1/Task2.jsx';
-import Component4 from './exam/d2/Component4.jsx';
-import Component5 from './exam/d2/Component5.jsx';
-import Component6 from './exam/d2/Component6.jsx';
-import Component7 from './exam/d2/Component7.jsx';
-import Task3 from './exam/d2/Task3.jsx';
-import Task4 from './exam/d2/Task4.jsx';
-import Component8 from './exam/d3/Component8.jsx';
-import Component9 from './exam/d3/Component9.jsx';  
-import Component10 from './exam/d3/Component10.jsx'; 
-import Movie from './movie/Movie.jsx';  // 영화 api
-import Component11 from './exam/d4/Component11.jsx'; // useRef
-import Component12 from './exam/d4/Component12.jsx'; // 라우터
-import Task6 from './exam/d4/Task6.jsx'; // 실습/회원가입/로그인/라우터
-
+// import Component1 from './exam/d1/Component1.jsx';
+// import Component2 from './exam/d1/Component2.jsx';
+// import Component3 from './exam/d1/Component3.jsx';
+// import Task1 from './exam/d1/Task1.jsx';
+// import Task2 from './exam/d1/Task2.jsx';
+// import Component4 from './exam/d2/Component4.jsx';
+// import Component5 from './exam/d2/Component5.jsx';
+// import Component6 from './exam/d2/Component6.jsx';
+// import Component7 from './exam/d2/Component7.jsx';
+// import Task3 from './exam/d2/Task3.jsx';
+// import Task4 from './exam/d2/Task4.jsx';
+// import Component8 from './exam/d3/Component8.jsx';
+// import Component9 from './exam/d3/Component9.jsx';  
+// import Component10 from './exam/d3/Component10.jsx'; 
+// import Movie from './movie/Movie.jsx';  // 영화 api
+// import Component11 from './exam/d4/Component11.jsx'; // useRef
+// import Component12 from './exam/d4/Component12.jsx'; // 라우터
+// import Task6 from './exam/d4/Task6.jsx'; // 실습/회원가입/로그인/라우터
+//import CompSlice13 from './exam/d5/Compslice13.jsx'; // 리덕스 툴킷 slice
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
 // create.render( <Component1> </Component1> )
@@ -75,8 +75,17 @@ import Task6 from './exam/d4/Task6.jsx'; // 실습/회원가입/로그인/라우
 // day 04
 // create.render(<Component11/>)
 // create.render(<Component12/>)
-create.render(<Task6/>)
+// create.render(<Task6/>)
+// import { Provider } from "react-redux";
+// create.render(<Provider> <CompSlice13 /> </Provider>)
 
+import App from './exam/d5/실습7_리덕스/App.jsx'; // 리덕스 툴킷 slice
+import { Provider } from 'react-redux';
+import store from './exam/d5/실습7_리덕스/store/store.js';
+
+
+/** redux : 내가 만든 저장소(store)를 root 컴포넌트에 공급(Provider)하여, 모든 컴포넌트가 사용할 수 있도록 하는 *전역변수*  */
+create.render( <Provider store = { store }> <App /> </Provider> )
 
 
 
