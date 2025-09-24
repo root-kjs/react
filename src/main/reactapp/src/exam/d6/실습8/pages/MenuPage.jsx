@@ -1,7 +1,18 @@
 import axios from 'axios'; //  npm i axios
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { addCart } from '../store/cartSlice.js';
 
 export default function MenuPage( props ){
+    /** 장바구니 전역변수 상태 가져오기 */
+    // [1] store 등록된 상태를 가져오기 , useSelector( (state) => state.store등록된상태명 )
+    // const { 상태변수명 } = useSelector( (state)=> state.상태명 )
+    const{ isAdded } = useSelector( (state) => state.cartMenu );
+
+    // [2] 액션 이용해 전역변수 상태 변경한다. useDispatch();
+    const dispatch = useDispatch();
+
+    //---------------------------------------------------------------------------------------------------
     /** 1. 샘플 제품목록 */
     const menuSample = [
         { id: 1, name: "아메리카노", price: 3000 }, { id: 2, name: "카페라떼", price: 4000 },{ id: 3, name: "카푸치노", price: 4500 }
@@ -15,7 +26,6 @@ export default function MenuPage( props ){
     const[ count , setCount ] = useState( 1 ); // 수량 +,- 데이터 
 
    
-
     /** 4. axios를 이용하여 스프링에게 데이터 요청 >>>> 현재 일단 패스!!...지만 적어본다..... */
     const printMenu = async() => {
         try{
@@ -43,37 +53,42 @@ export default function MenuPage( props ){
             //setArray([...array, newUser]); // 리스트를 재렌더링
             (memu) => { if (memu.id === id) {
                  const newCount = memu.count + changCount;
-                 return { ...memu, count: newCount > 0 ? newCount : 1 } //  최소 수량 유지
-            } else return memu 
-            }
-        );
+                 return { ...memu, count: newCount > 0 ? newCount : 0 } //  최소 수량 유지
+            } else return memu });
         setMenus( selectMenu );// 변경된 상태로 메뉴배열 저장됨,
-    }//func 
+    }//func e
 
     const countMinus = () => { if( count >= 2 ){ setCount( count - 1 ) } } // 관례적인 const상수를 사용하기 때문에 ++ 말고 + 1을 사용
 
     /** 6. 장바구니 담기 메소드 */
-    const addCart = () => {
-
+    const handleCart = ( id ) => { //map을 사용하면 배열 전체를 순회하며 새로운 배열을 반환하지만, 특정 메뉴 하나만 필요하기 때문에 find가 더 효율적입니다.
+        const addCartMenu = memus.find(  (menu)=> memu.id === id );
+      
+        // 2. 만약 해당 메뉴를 찾았고, 수량이 1 이상이라면
+    if (addCartMenu && addCartMenu.count > 0) {
+        // 3. Redux store에 정의된 addCart 액션을 dispatch하여 메뉴를 장바구니에 추가합니다.
+        // 이때, 찾은 메뉴 객체를 payload로 전달합니다.
+        dispatch(addCart(addCartMenu));
+        // 4. 장바구니에 담았다는 메시지나 알림을 띄워 사용자에게 피드백을 줄 수 있습니다.
+        alert(`${addCartMenu.name} ${addCartMenu.count}개가 장바구니에 추가되었습니다.`);
     }
+    }//func e
 
 // -------------------------------------- 메뉴페이지 > jsx 영역--------------------------------------
     return(<>
     <h1>메뉴</h1>
         { 
         memus.map( ( menu ) => { return <ul>
-            { console.log( menu ) }
             <li>제품번호 : { menu.id }</li>
             <li>제품명 : { menu.name }</li>
             <li>가격 : { menu.price.toLocaleString() } </li> 
-            <li>수량 :  { menu.count == null ? 1 : menu.count }
+            <li>수량 :  { menu.count == null ? 0 : menu.count }
                 {/* 사용자가 해당 메뉴의 수량버튼 클릭시, 해당 메뉴id와 수량을 매개변수로 전달 --> handleCount */}
                 <button name='plus' onClick={ () => { handleCount( menu.id, 1 ) } } type='button'> + </button> 
                 <button name='minus' onClick={ () => { handleCount( menu.id, -1 ) } } type='button'> - </button> 
             </li>
             <li> 
-                {/* onClick='' */}
-                <button  type='button'>장바구니 담기 </button> 
+                <button onClick={() => { handleCart(menu.id) } } type='button'>장바구니 담기 </button> 
             </li>
         </ul>})
         }

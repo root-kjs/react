@@ -97,7 +97,14 @@ const create = createRoot( root );
 // );
 
 import App from './exam/d6/실습8/App.jsx';
-create.render( < App /> )
+import { Provider } from 'react-redux';
+import store from './exam/d6/실습8/store/store.js';
+create.render( 
+<Provider store = { store }>
+  < App />
+</Provider>
+
+)
 
 
 
