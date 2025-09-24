@@ -1,2 +1,24 @@
-d5
-tlftmq
+https://docs.google.com/spreadsheets/d/1QEJ-DvLa22uUQucMeCZDUH9VH5PPZr5-vzLx5UF8Qig/edit?gid=0#gid=0
+
+
+패키지구성
+"example
+->day05
+--> 실습7
+----> components    : 컴포넌트 들을 저장하는 폴더  
+    -> Header.jsx
+
+----> pages         : page 컴포넌트들을 저장하는 폴더
+    -> HomePage.jax
+    -> LoginPage.jax
+    -> ProfilePage.jax
+
+----> store         : 리덕스 관련 store 와 slice js 저장하는 폴더
+    -> store.js
+    -> userSlice.js 
+
+----> App.jsx       : 최초 main.jsx에서 렌더링 되는 컴포넌트 파일
+
+main.jsx            : 최초 컴포넌트를 렌더링 하는 파일 
+
+"
