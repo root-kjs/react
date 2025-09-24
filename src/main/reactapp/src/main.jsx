@@ -79,23 +79,25 @@ const create = createRoot( root );
 // import { Provider } from "react-redux";
 // create.render(<Provider> <CompSlice13 /> </Provider>)
 
-import App from './exam/d5/실습7_리덕스/App.jsx'; // 리덕스 툴킷 slice
-import { Provider } from 'react-redux';
-import store, { persistor } from './exam/d5/실습7_리덕스/store/store.js';
-import { PersistGate } from 'redux-persist/integration/react';
+// import App from './exam/d5/실습7_리덕스/App.jsx'; // 리덕스 툴킷 slice
+// import { Provider } from 'react-redux';
+// import store, { persistor } from './exam/d5/실습7_리덕스/store/store.js';
+// import { PersistGate } from 'redux-persist/integration/react';
 
-
-/** redux : 
+/** redux :
  * 1) Provider > 내가 만든 저장소(store)를 root 컴포넌트에 공급(Provider)하여, 모든 컴포넌트가 사용할 수 있도록 하는 *전역변수*  
  * 2) PersistGate > 내가 만든 persist
 */
-create.render( 
-  <Provider store = { store }> 
-    <PersistGate loading = { null } persistor={ persistor }>
-      <App /> 
-    </PersistGate>
-  </Provider> 
-);
+// create.render( 
+//   <Provider store = { store }> 
+//     <PersistGate loading = { null } persistor={ persistor }>
+//       <App /> 
+//     </PersistGate>
+//   </Provider> 
+// );
+
+import App from './exam/d6/실습8/App.jsx';
+create.render( < App /> )
 
 
 
