@@ -14,6 +14,7 @@
 /** [2] 전역변수의 초기값 , '장바구니 담기 여부'를 저장하는 상태 true:추가됨 , false:추가안됨  */
 import { createSlice } from '@reduxjs/toolkit';
 
+//const initialState = { isAdded: false }
 const initialState = { isAdded: false }
 
 /** [3] 상태를 변경하는 리듀서 함수들을 정의 */ 

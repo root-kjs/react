@@ -62,14 +62,14 @@ export default function MenuPage( props ){
 
     /** 6. 장바구니 담기 메소드 */
     const handleCart = ( id ) => { 
-        //map을 사용하면 배열 전체를 순회하며 새로운 배열을 반환하지만, 특정 메뉴 하나만 필요하기 때문에 find가 더 효율적입니다.
+        //map을 사용하면 배열 전체를 순회하며 새로운 배열을 반환하지만, 특정 메뉴 하나만 필요하기 때문에 find가 더 효율적
         const addCartMenu = memus.find( (menu) => memu.id === id );
         console.log(addCartMenu);// 확인용
         if (addCartMenu && addCartMenu.count > 0) {
-            // 3. Redux store에 정의된 addCart 액션을 dispatch하여 메뉴를 장바구니에 추가합니다.
-            // 이때, 찾은 메뉴 객체를 payload로 전달합니다.
+            // 3. Redux store에 정의된 addCart 액션을 dispatch하여 메뉴를 장바구니에 추가
+            // 이때, 찾은 메뉴 객체를 payload로 전달
             dispatch(addCart(addCartMenu));
-            // 4. 장바구니에 담았다는 메시지나 알림을 띄워 사용자에게 피드백을 줄 수 있습니다.
+           
             alert(`${addCartMenu.name} ${addCartMenu.count}개가 장바구니에 추가되었습니다.`);
         }
     }//func e
@@ -79,16 +79,16 @@ export default function MenuPage( props ){
     <h1>메뉴</h1>
         { 
         memus.map( ( menu ) => { return <ul>
-            <li key={ menu.id }>제품번호 : { menu.id }</li>
+            <li>제품번호 : { menu.id }</li>
             <li>제품명 : { menu.name }</li>
             <li>가격 : { menu.price.toLocaleString() } </li> 
-            <li>수량 :  { menu.count == null ? 0 : menu.count }
+            <li>수량 : { menu.count == null ? 0 : menu.count }
                 {/* 사용자가 해당 메뉴의 수량버튼 클릭시, 해당 메뉴id와 수량을 매개변수로 전달 --> handleCount */}
                 <button name='plus' onClick={ () => { handleCount( menu.id, 1 ) } } type='button'> + </button> 
                 <button name='minus' onClick={ () => { handleCount( menu.id, -1 ) } } type='button'> - </button> 
             </li>
             <li> 
-                <button onClick={() => { handleCart(menu.id) } } type='button'>장바구니 담기 </button> 
+                <button onClick={() => { handleCart(menu) } } type='button'>장바구니 담기 </button> 
             </li>
         </ul>})
         }
