@@ -61,17 +61,17 @@ export default function MenuPage( props ){
     const countMinus = () => { if( count >= 2 ){ setCount( count - 1 ) } } // 관례적인 const상수를 사용하기 때문에 ++ 말고 + 1을 사용
 
     /** 6. 장바구니 담기 메소드 */
-    const handleCart = ( id ) => { //map을 사용하면 배열 전체를 순회하며 새로운 배열을 반환하지만, 특정 메뉴 하나만 필요하기 때문에 find가 더 효율적입니다.
-        const addCartMenu = memus.find(  (menu)=> memu.id === id );
-      
-        // 2. 만약 해당 메뉴를 찾았고, 수량이 1 이상이라면
-    if (addCartMenu && addCartMenu.count > 0) {
-        // 3. Redux store에 정의된 addCart 액션을 dispatch하여 메뉴를 장바구니에 추가합니다.
-        // 이때, 찾은 메뉴 객체를 payload로 전달합니다.
-        dispatch(addCart(addCartMenu));
-        // 4. 장바구니에 담았다는 메시지나 알림을 띄워 사용자에게 피드백을 줄 수 있습니다.
-        alert(`${addCartMenu.name} ${addCartMenu.count}개가 장바구니에 추가되었습니다.`);
-    }
+    const handleCart = ( id ) => { 
+        //map을 사용하면 배열 전체를 순회하며 새로운 배열을 반환하지만, 특정 메뉴 하나만 필요하기 때문에 find가 더 효율적입니다.
+        const addCartMenu = memus.find( (menu) => memu.id === id );
+        console.log(addCartMenu);// 확인용
+        if (addCartMenu && addCartMenu.count > 0) {
+            // 3. Redux store에 정의된 addCart 액션을 dispatch하여 메뉴를 장바구니에 추가합니다.
+            // 이때, 찾은 메뉴 객체를 payload로 전달합니다.
+            dispatch(addCart(addCartMenu));
+            // 4. 장바구니에 담았다는 메시지나 알림을 띄워 사용자에게 피드백을 줄 수 있습니다.
+            alert(`${addCartMenu.name} ${addCartMenu.count}개가 장바구니에 추가되었습니다.`);
+        }
     }//func e
 
 // -------------------------------------- 메뉴페이지 > jsx 영역--------------------------------------
@@ -79,7 +79,7 @@ export default function MenuPage( props ){
     <h1>메뉴</h1>
         { 
         memus.map( ( menu ) => { return <ul>
-            <li>제품번호 : { menu.id }</li>
+            <li key={ menu.id }>제품번호 : { menu.id }</li>
             <li>제품명 : { menu.name }</li>
             <li>가격 : { menu.price.toLocaleString() } </li> 
             <li>수량 :  { menu.count == null ? 0 : menu.count }

@@ -6,6 +6,7 @@ export default function Header( props ){
     return(<>
         <h1><Link to ='/'>더조은카페</Link></h1>
         <ul>
+            <li><Link to ='/'>홈</Link></li>
             <li><Link to ='/menu'>메뉴</Link></li>
             <li><Link to ='/cart'>장바구니</Link></li>
         </ul>
