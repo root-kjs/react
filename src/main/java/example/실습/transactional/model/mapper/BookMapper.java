@@ -2,9 +2,15 @@ package example.실습.transactional.model.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
+
+import java.util.Map;
+
 
 @Mapper
 public interface BookMapper {
 
-//   지도 테이블 분석 먼저 하고 진행할게요!!!! ㅜㅜ
+    @Update(" update books set stock = stock - 1 where id = #{ book_id} and stock >= 0 ")
+    public boolean rent( Map<String, Object> body);
+
 }
