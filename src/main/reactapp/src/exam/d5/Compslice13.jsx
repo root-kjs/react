@@ -30,22 +30,20 @@ export default function Compslice13() {
     }
 
     return (<>
-        <Provider store= { store } >
-            <h3>리덕스 예제1</h3>
-            <button onClick={ loginHandle } >로그인</button>
-            <button onClick={ logoutHandle } >로그아웃</button>
-            <div>로그인 상태 : { isAuthenticated == true
-                ? 
-                <div>로그인 상태입니다.
-                    <button onClick={ logoutHandle } >로그아웃</button>
-                </div>
-                : 
-                <div>로그아웃 상태입니다.
-                    <button onClick={ loginHandle } >로그인</button>
-                </div>
-                }
+        <h3>리덕스 예제1</h3>
+        <button onClick={ loginHandle } >로그인</button>
+        <button onClick={ logoutHandle } >로그아웃</button>
+        <div>로그인 상태 : { isAuthenticated == true
+            ? 
+            <div>로그인 상태입니다.
+                <button onClick={ logoutHandle } >로그아웃</button>
             </div>
-        </Provider>
+            : 
+            <div>로그아웃 상태입니다.
+                <button onClick={ loginHandle } >로그인</button>
+            </div>
+            }
+        </div>
     </>)
 
 }// func end
