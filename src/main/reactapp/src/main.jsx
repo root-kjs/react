@@ -52,7 +52,9 @@ const create = createRoot( root );
 // import Component11 from './exam/d4/Component11.jsx'; // useRef
 // import Component12 from './exam/d4/Component12.jsx'; // 라우터
 // import Task6 from './exam/d4/Task6.jsx'; // 실습/회원가입/로그인/라우터
-//import CompSlice13 from './exam/d5/Compslice13.jsx'; // 리덕스 툴킷 slice
+// import CompSlice13 from './exam/d5/Compslice13.jsx'; // 리덕스 툴킷 slice
+
+
 
 // `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
 // create.render( <Component1> </Component1> )
@@ -96,15 +98,20 @@ const create = createRoot( root );
 //   </Provider> 
 // );
 
-import App from './exam/d6/실습8/App.jsx';
-import { Provider } from 'react-redux';
-import store from './exam/d6/실습8/store/store.js';
-create.render( 
-<Provider store = { store }>
-  < App />
-</Provider>
-)
+// import App from './exam/d6/실습8/App.jsx';
+// import { Provider } from 'react-redux';
+// import store from './exam/d6/실습8/store/store.js';
+// create.render( 
+// <Provider store = { store }>
+//   < App />
+// </Provider>
+// )
 
+// import Component14 from './exam/d7/Component14.jsx'; 
+// create.render(<Component14/>)
+
+import App from './exam/d6/실습9/App.jsx';
+create.render(<App/>)
 
 
 
