@@ -1,4 +1,4 @@
-package example.실습.transactional;
+package example.day10.transactional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

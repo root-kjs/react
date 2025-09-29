@@ -1,4 +1,4 @@
-package example.실습.transactional.model.dto;
+package example.day10.transactional.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package example.실습.transactional.controller;
+package example.day10.transactional.controller;
 
-import example.실습.transactional.service.BookService;
+import example.day10.transactional.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;

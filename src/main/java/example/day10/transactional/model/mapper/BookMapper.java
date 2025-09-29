@@ -1,6 +1,5 @@
-package example.실습.transactional.model.mapper;
+package example.day10.transactional.model.mapper;
 
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 

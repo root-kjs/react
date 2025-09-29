@@ -1,11 +1,9 @@
-package example.실습.transactional.service;
+package example.day10.transactional.service;
 
-import example.실습.transactional.model.mapper.BookMapper;
+import example.day10.transactional.model.mapper.BookMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
