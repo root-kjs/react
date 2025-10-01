@@ -78,10 +78,10 @@ const create = createRoot( root );
 // create.render(<Component11/>)
 // create.render(<Component12/>)
 // create.render(<Task6/>)
- import Compslice13 from './exam/d5/Compslice13.jsx'; // 리덕스 툴킷 slice
- import { Provider } from "react-redux";
- import store from './exam/d5/store.jsx';
- create.render(<Provider store = { store }> <Compslice13 /> </Provider>)
+//  import Compslice13 from './exam/d5/Compslice13.jsx'; // 리덕스 툴킷 slice
+//  import { Provider } from "react-redux";
+//  import store from './exam/d5/store.jsx';
+//  create.render(<Provider store = { store }> <Compslice13 /> </Provider>)
 
 // import App from './exam/d5/실습7_리덕스/App.jsx'; // 리덕스 툴킷 slice
 // import { Provider } from 'react-redux';
@@ -115,6 +115,8 @@ const create = createRoot( root );
 // import App from './exam/d6/실습9/App.jsx';
 // create.render(<App/>)
 
+import Component15 from './exam/d8/Component15.jsx';
+create.render(<Component15/>)
 
 
 
