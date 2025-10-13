@@ -52,8 +52,8 @@ public interface XmlMapper {
     // 방법1
     StudentDto query1( int kor );
 
-    // 방법2 : XML
-    StudentDto query2( int kor );
+    // 6. 방법2 : XML  : 조건에 맞는 동적쿼리 : 여러개 학생 검색!
+    List<StudentDto> query2( int kor );
     
     // 7. 이름(포함된) 또는 수학점수(이상)로 검색
     StudentDto query3( String name, int math );

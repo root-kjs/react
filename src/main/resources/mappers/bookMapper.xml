@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.실습.실습4.BookMapper">
+    <!--  1. 책 단일 등록( 생성된 도서번호 반환 ) -->
+    <!-- int saveBook( BookDto bookDto );-->
+    <insert id="saveBook" parameterType="example.실습.실습4.BookDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO books(title, stock) values( #{title}, #{stock} )
+    </insert>
+
+    <!--  2.  책 일괄 등록-->
+    <!--    int saveAllBook( List<BookDto> bookDtos ); -->
+    <insert id="saveAllBook" parameterType="list" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO books(title, stock) values
+        <foreach collection="list" item="b" separator=",">
+        ( #{b.title}, #{b.stock} )
+        </foreach>
+    </insert>
+
+
+    <!--  3. 대출 기록 검색 -->
+    <!--  //- 대출한 사람 또는 대출한도서명 으로 조회-->
+    <!--  //- 조건이 없을 경우 전체 조회-->
+    <!--    List<BookDto> findBook();-->
+
+
+
+</mapper>
