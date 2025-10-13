@@ -65,6 +65,16 @@ public class XmlController {
         return ResponseEntity.ok( true );
     }
 
+    // 6. 특정 국어점수 보다 이상인 학생 조회, 일반 어노테이션에서는 사용 불가
+    @GetMapping("/si")
+    public ResponseEntity<?> query2( @RequestParam int kor ){
+        // < ? > ----> 제네릭 타입에 ? 넣으면 와일드 카드 됨. 모든 타입을 지칭한다. 모든 자료가 대입된다.
+        // .ok( true ) ----> 소괄호 안에 모든 타입 데이터 입력 가능해진다.
+        List<StudentDto> result = xmlMapper.query2( kor );
+        return ResponseEntity.ok( result );
+    }
+
+
     // 7. 개별 수정 StudentDto studentDto
     @PutMapping("/u")
     public ResponseEntity<?> query3( @RequestParam String name, int math ){
