@@ -39,5 +39,42 @@
         update student set kor = #{kor }, math = #{ math } where sno = #{ sno };
     </update>
 
+    <!--  where 1 = 1 ===> <where></where>  -->
+    <select id="query2" parameterType="int" resultType="example.day13.StudentDto">
+        select * from student where 1 = 1
+        <if test="kor != null">
+            and kor >= #{ kor }
+        </if>
+    </select>
+
+    <!-- 파라미터가 2개 이상 일 경우에는 dto로 묶거나 생략/// StudentDto query3( String name, int math );-->
+    <!-- 파라미터 타입이 기본형이 경우는 생략 가능,  2개 이상 일 경우에는 dto는(개발자가 직접 만든) 생략이 안된다.   -->
+    <!-- parameterType="String, int" (X), parameterType="example.day13.StudentDto" or  생략 -->
+    <!-- 문자열을 연결해주는 함수( 문자열, 문자열 ) :   concat where 1= 1 -->
+    <!-- and 는 조건이 2개 이상 일경우에 사용하는 쿼리문   -->
+    <!--    '%', #{name}, '%' 값이 포함 된 -->
+    <select id="query3" resultType="example.day13.StudentDto">
+   <!--  select * from student where 1= 1-->
+        select * from student
+        <where>
+            <if test="name != null">
+                and name like concat('%', #{name}, '%' )
+            </if>
+            <if test=" math != 0 ">
+                and math >= #{ math }
+            </if>
+        </where>
+    </select>
+
+    <!--  8. 여러개 학생 등록( forEach )-->
+    <!--  자바는 매핑을 할 때마다 통신을 하기 때문에 대량의 데이터는 모아놨다가 처리 -->
+    <!--  <foreach collection="타입(list)" item="student(아무거나)" separator=", 반복되는 sql의 구분문자">  -->
+    <insert id="saveAll" parameterType="list" useGeneratedKeys="true" keyProperty="sno">
+        insert into student(name, kor, math ) values
+        <foreach collection="list" item="s" separator=",">
+            ( #{s.name}, #{s.kor}, #{s.math} )
+        </foreach>
+    </insert>
+
 
 </mapper>

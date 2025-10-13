@@ -65,6 +65,26 @@ public class XmlController {
         return ResponseEntity.ok( true );
     }
 
+    // 7. 개별 수정 StudentDto studentDto
+    @PutMapping("/u")
+    public ResponseEntity<?> query3( @RequestParam String name, int math ){
+        // < ? > ----> 제네릭 타입에 ? 넣으면 와일드 카드 됨. 모든 타입을 지칭한다. 모든 자료가 대입된다.
+        // .ok( true ) ----> 소괄호 안에 모든 타입 데이터 입력 가능해진다.
+        StudentDto result = xmlMapper.query3( name, math );
+        return ResponseEntity.ok( result );
+    }
+
+    // 8.  여러개 학생 등록( forEach )
+    @PostMapping("/all")
+    public ResponseEntity<?> saveAll( @RequestBody List<StudentDto> studentDtos ){
+        // < ? > ----> 제네릭 타입에 ? 넣으면 와일드 카드 됨. 모든 타입을 지칭한다. 모든 자료가 대입된다.
+        // .ok( true ) ----> 소괄호 안에 모든 타입 데이터 입력 가능해진다.
+        xmlMapper.saveAll( studentDtos );
+        return ResponseEntity.ok( true );
+    }
+
+
+
 
 
 }// class end
