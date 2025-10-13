@@ -9,8 +9,9 @@
 
 <!-- xml과 매핑할 인터페이스 설정, src JAVA 이하 경로 지정 >  -->
 <mapper namespace="example.day13.XmlMapper">
+
     <!-- 1. 등록  id="추상메소드명" 매핑을 하겠다. parameterType="매개변수(클래스) 경로 타입"  -->
-    <insert id="save" parameterType="example.day13.StudentDto" >
+    <insert id="save" parameterType="example.day13.StudentDto" useGeneratedKeys="true" keyProperty="sno" >
         INSERT INTO student(name, kor, math ) values(#{name}, #{kor}, #{math} )
     </insert>
 
@@ -20,5 +21,23 @@
     <select id="findAll" resultType="example.day13.StudentDto">
         select * from student;
     </select>
+
+
+    <!--  3. 개별 조회  -->
+    <!--  <select id="추상메소드명" resultType="반환타입 파일경로">  -->
+    <select id="find" resultType="example.day13.StudentDto">
+        select * from student where sno = #{sno} ;
+    </select>
+
+    <!-- 4. 개별 삭제 -->
+    <delete id="delete" parameterType="int" >
+        delete from student where sno = #{ sno };
+    </delete>
+
+    <!-- 5. 개별 수정 : 클래스는 경로로  -->
+    <update id="update" parameterType="example.day13.StudentDto">
+        update student set kor = #{kor }, math = #{ math } where sno = #{ sno };
+    </update>
+
 
 </mapper>
