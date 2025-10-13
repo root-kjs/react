@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- XML이란? 마크업을 이용한 데이터 저장(설정값)/전달(매핑)/교환(API) 마크업/프로그래밍 언어 -->
+<!-- HTML? 마크업을 이용한 웹페이지 마크업 언어 -->
+
+<!-- XML 파일내 mabatis 라이브러리 설정 -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml과 매핑할 인터페이스 설정, src JAVA 이하 경로 지정 >  -->
+<mapper namespace="example.day13.XmlMapper">
+    <!-- 1. 등록  id="추상메소드명" 매핑을 하겠다. parameterType="매개변수(클래스) 경로 타입"  -->
+    <insert id="save" parameterType="example.day13.StudentDto" >
+        INSERT INTO student(name, kor, math ) values(#{name}, #{kor}, #{math} )
+    </insert>
+
+
+    <!--  2. 전체 조회  -->
+    <!--  <select id="추상메소드명" resultType="반환타입 파일경로">  -->
+    <select id="findAll" resultType="example.day13.StudentDto">
+        select * from student;
+    </select>
+
+</mapper>
