@@ -17,4 +17,13 @@ public interface BookMapper {
         // - 조건이 없을 경우 전체 조회
     List< BookDto > findBook( String member , String title );
 
+    // 4.ALTER 이용한 테이블 수정2개 controller/service/mapper
+        // 4-1. 책books 테이블에 price 가격(int) 필드 추가
+        // 4-2. 책books 테이블에 title 책이름 필드 (longtext) 필드 수정
+    List<BookDto> eidtBookColumn();
+
+
+     int eidtBookColumn2(  );
+
+
 }//interface end

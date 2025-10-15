@@ -12,7 +12,7 @@ create table member_tbl_02(
     grade char(1),   							-- 고객등급(A/B/C) 1자리
     city char(2)								-- 거주도시 코드 2자리
 );
-ALTER TABLE member_tbl_02 AUTO_INCREMENT = 100006;
+ALTER TABLE member_tbl_02 AUTO_INCREMENT = 100007;
 
 # 02. 회원매출정보 테이블 
 create table money_tbl_02( 

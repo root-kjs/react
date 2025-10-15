@@ -97,6 +97,8 @@ INSERT INTO trans (name, money) VALUES
 ('신동엽', 200000),
 ('서장훈', 200000);
 select * from trans;
+
+-- --------------------------------- 도서 등록/대출 ------------------------------------
  -- 1. 책 테이블
     CREATE TABLE books (
         id INT AUTO_INCREMENT,
@@ -128,6 +130,6 @@ select * from trans;
     -- 5. 확인용 조회 쿼리
     SELECT * FROM books;
     SELECT * FROM rentals;
-    
+ -- --------------------------------- 도서 등록/대출 ------------------------------------   
 select * from books b LEFT JOIN rentals r ON b.id = r.id;
 select * from books b right JOIN rentals r ON b.id = r.id;
