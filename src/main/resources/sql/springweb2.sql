@@ -131,5 +131,42 @@ select * from trans;
     SELECT * FROM books;
     SELECT * FROM rentals;
  -- --------------------------------- 도서 등록/대출 ------------------------------------   
-select * from books b LEFT JOIN rentals r ON b.id = r.id;
-select * from books b right JOIN rentals r ON b.id = r.id;
+-- select * from books b LEFT JOIN rentals r ON b.id = r.id;
+-- select * from books b right JOIN rentals r ON b.id = r.id;
+
+-- 실습6_251016 -----
+-- create or replace view view_order_summary as
+-- select o.mno, m.name, o.product from member m inner join orders o on m.mno = o.mno;
+-- create or replace view rentals_view2 as 
+-- 	select * from books b inner join rentals r on b.id = r.book_id; -- 컬럼명이 같으면 나중에 뷰 조인이 안된다. 
+
+-- select * from books b inner join rentals r on b.id = r.book_id;
+
+-- create or replace view rentals_view2 as 
+-- 	select 
+--     b.id AS book_id_pk,         
+--     b.title,                    
+--     b.stock,                   
+--     r.id AS rental_id_pk,       
+--     r.member,
+--     r.rent_date,             
+--     r.return_date,             
+--     r.book_id                 
+--     from books b inner join rentals r on b.id = r.book_id; -- 컬럼명이 같으면 조인이 안된다. 
+--     
+select * from rentals_view2;
+drop view if exists rentals_view2;
+
+select * from rentals_view3;
+drop view if exists rentals_view3;
+
+select * from rentals_view111;
+
+select avg(stock) from books;
+
+-- 평균보다 많은 도서 
+select * from books where stock > (select avg(stock) from books);
+select * from booksMost_view22;
+
+
+
