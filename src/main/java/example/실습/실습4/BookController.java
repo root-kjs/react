@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/book")
@@ -58,5 +59,41 @@ public class BookController {
         bookMapper.eidtBookColumn2(  );
         return ResponseEntity.ok( true );
     }
+
+    // 실습6. [ 조건2 ] view 생성 기능 2개 controller/service/mapper <UPDATE>
+    //    1. 대출기록 상세 뷰 생성 ( 책 + 대출기록 JOIN )
+    @PutMapping("/view1")
+    public ResponseEntity<?> view1Book(){
+        bookMapper.view1Book();
+        return ResponseEntity.ok( true );
+    }// func end
+
+    // 실습6. [ 조건2 ] view 생성 기능 2개 controller/service/mapper <UPDATE>
+    //    2. 평균보다 많은 재고를 가진 도서 조회 뷰 생성
+    @PutMapping("/view2")
+    public ResponseEntity<?> view2Book(){
+        bookMapper.view2Book();
+        return ResponseEntity.ok( true );
+    }// func end
+
+    // 실습6. [ 조건3 ] 생성한 view 조회 기능 2개 controller/service/mapper
+    //    1. 대출 상세 뷰 조회
+    @GetMapping("/view1")
+    public ResponseEntity<?> view3Book(){
+        List<Map<String, Object>> bookDtos = bookMapper.view3Book();
+        return ResponseEntity.ok( bookDtos );
+    }
+
+    // 실습6.[ 조건3 ] 생성한 view 조회 기능 2개 controller/service/mapper
+    //    2. 많은 재고를 가진 도서 조회 뷰 조회
+    @GetMapping("/view2")
+    public ResponseEntity<?> view4Book(){
+        List<BookDto> bookDtos = bookMapper.view4Book();
+        return ResponseEntity.ok( bookDtos );
+    }
+
+
+
+
 
 }// class end

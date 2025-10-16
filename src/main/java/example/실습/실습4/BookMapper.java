@@ -3,6 +3,8 @@ package example.실습.실습4;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Mapper
 public interface BookMapper {
@@ -24,6 +26,23 @@ public interface BookMapper {
 
 
      int eidtBookColumn2(  );
+
+    // 실습6. [ 조건2 ] view 생성 기능 2개 controller/service/mapper <UPDATE>
+    //    1. 대출기록 상세 뷰 생성 ( 책 + 대출기록 JOIN )
+    int view1Book();
+
+    // 실습6. [ 조건2 ] view 생성 기능 2개 controller/service/mapper <UPDATE>
+    //    2. 평균보다 많은 재고를 가진 도서 조회 뷰 생성
+    int view2Book();
+
+    //    [ 조건3 ] 생성한 view 조회 기능 2개 controller/service/mapper
+    //    1. 대출 상세 뷰 조회
+    List<Map<String, Object>> view3Book();
+
+    //    [ 조건3 ] 생성한 view 조회 기능 2개 controller/service/mapper
+    //    2. 많은 재고를 가진 도서 조회 뷰 조회
+    List<BookDto> view4Book();
+
 
 
 }//interface end

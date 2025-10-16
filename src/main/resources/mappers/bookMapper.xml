@@ -43,7 +43,41 @@
 <!--        alter table books add column price int;-->
 <!--    </update>-->
 
+<!--    // 실습6. [ 조건2 ] view 생성 기능 2개 controller/service/mapper <UPDATE>-->
+<!--    //    1. 대출기록 상세 뷰 생성 ( 책 + 대출기록 JOIN )-->
+<!--    //    2. 평균보다 많은 재고를 가진 도서 조회 뷰 생성-->
 
+    <update id="view1Book" >
+        create or replace view rentals_view111 as
+            select
+                b.id AS book_id_pk,
+                b.title,
+                b.stock,
+                r.id AS rental_id_pk,
+                r.member,
+                r.rent_date,
+                r.return_date,
+                r.book_id
+        from books b inner join rentals r on b.id = r.book_id; <!-- 컬럼명이 같으면 뷰에서 조인이 안된다. -->
+
+<!--        create or replace view booksMost_view  as-->
+<!--            select * from books-->
+<!--            where stock > (select avg(stock) from books);-->
+    </update>
+
+    <update id="view2Book" >
+        create or replace view booksMost_view22  as
+            select * from books
+            where stock > (select avg(stock) from books);
+    </update>
+
+    <select id="view3Book" resultType="java.util.Map">
+        select * from rentals_view111;
+    </select>
+
+    <select id="view4Book" resultType="example.실습.실습4.BookDto">
+        select * from booksMost_view22;
+    </select>
 
 
 </mapper>
