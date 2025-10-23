@@ -52,7 +52,6 @@ public class Oauth2SuccessHandler implements AuthenticationSuccessHandler {
             Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
             uid = (String) profile.get("nickname"); // 가져오는 데이터가 닉네임밖에 없어서 임의로 다 닉네임 넣음
             name = (String) profile.get("nickname");
-
         }
 
         // 구글 테스트 url : http://localhost:8080/oauth2/authorization/google
