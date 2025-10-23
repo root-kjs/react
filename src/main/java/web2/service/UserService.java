@@ -53,7 +53,24 @@ public class UserService {
         return result;
     }
 
-}
+    // 4. [oauth2] 회원가입
+    public UserDto oauth2UserSignup( String uid , String name ){
+        // 1. 기존 유저인지 확인
+        UserDto userDto = userMapper.login( uid );
+        if ( userDto == null ){
+            UserDto oauthUser = new UserDto();
+            oauthUser.setUid( uid );
+            oauthUser.setUpwd( null );
+            oauthUser.setUname( name );
+            oauthUser.setUrole("USER");
+            userMapper.signup( oauthUser );
+            return oauthUser;
+        }
+        return null;
+    }// m end
+
+
+}// class end
 /*
     회원의 비밀번호를 암호화
     1234(평문) --- 나만의계산식 ---> 42348435354187(암호문)
