@@ -63,7 +63,7 @@ public class Oauth2SuccessHandler implements AuthenticationSuccessHandler {
 
         // [6] 로그인 성공시 어디로 이동할지 (프론트엔드 루트)
         response.sendRedirect("http://localhost:5173"); // 리액트 서버
-        response.sendRedirect("/"); // 자사 서버 메인 경로, localhost:8080
+        //response.sendRedirect("/"); // 자사 서버 메인 경로, localhost:8080
 
 
         // [7] oauth2 DB 저장

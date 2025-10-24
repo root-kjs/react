@@ -56,7 +56,8 @@ const create = createRoot( root );
 
 
 
-// `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````create.render(<Component1></Component1>)
+// `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+// create.render(<Component1></Component1>)
 // create.render( <Component1> </Component1> )
 // create.render(<Component1/>)
 // create.render(<Component2/>)
@@ -115,12 +116,11 @@ const create = createRoot( root );
 // import App from './exam/d6/실습9/App.jsx';
 // create.render(<App/>)
 
-import Component15 from './exam/d8/Component15.jsx';
-create.render(<Component15/>)
+// import Component15 from './exam/d8/Component15.jsx';
+// create.render(<Component15/>)
 
 
 
 
-
-
-
+import App from './web2/App';
+create.render(<App/>);
