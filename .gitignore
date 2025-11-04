@@ -42,5 +42,5 @@ bin/
 .DS_Store
 /logs/
 
-### InteliJ ###
+### Local Configuration / Secrets ###
 application.properties
