@@ -59,6 +59,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     // [15] Oauth2(구글 로그인)
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    // [16] JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+
 
 }
 
