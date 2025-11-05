@@ -19,6 +19,4 @@ public class AppStart {
         public WebSecurityCustomizer webSecurityCustomizer() {
             return (web) -> web.ignoring().requestMatchers("/api/goods/**");
         }
-
-
 }
