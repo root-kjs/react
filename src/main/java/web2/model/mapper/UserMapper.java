@@ -1,5 +1,6 @@
 package web2.model.mapper;
 
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
