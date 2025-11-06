@@ -43,9 +43,10 @@ public class Example {
         board2.setBno(2); board2.setBtitle("11월공지"); board2.setBcontent("내용");
         board2.setCategory( category1 ); // 단방향 참조
 
-        // 양방향 참조 //
+
         category1.getBoardList().add( board2 ); // 양방향은 사용을 지양 하자.
 
+        // 양방향 참조 //
         // 카테고리로 게시물을 조회할 수 있고 , 게시물로 카테고리 조회
         System.out.println( category1.getBoardList() );
         System.out.println( board2.getCategory() );
