@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/goods")
 @RequiredArgsConstructor//@AllArgsConstructor는 모든 필드를 파라미터로 받는 생성자를 만든다.
+@CrossOrigin( origins = "*") // 플러터(dio) http 통신용 : 모바일에서는 http 작동 안함. loacalhost 안됨  **IP로 해야 함.
 public class GoodsController {
 
     private final GoodsService goodsService;
@@ -16,6 +17,12 @@ public class GoodsController {
     @PostMapping
     public ResponseEntity<?> goodsSave(@RequestBody GoodsDto goodsDto){
         return ResponseEntity.ok( goodsService.goodsSave(goodsDto));
+    }
+
+    // 2. 전체조회
+    @GetMapping("/list")
+    public ResponseEntity<?> goodsAll(){
+        return ResponseEntity.ok( goodsService.goodsAll() );
     }
 
     // 개별조회
