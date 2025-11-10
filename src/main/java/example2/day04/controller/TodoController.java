@@ -28,10 +28,19 @@ public class TodoController {
         return ResponseEntity.ok( todoService.query2( title, content));
     }
 
-    // 32. like 연산자
+    // 3. like 연산자
     @GetMapping("/query3")
     public ResponseEntity<?> query3( @RequestParam String title ){
         return ResponseEntity.ok( todoService.query3(title));
+    }
+
+    // 4. 페이징 처리
+    @GetMapping("/page")
+    public ResponseEntity<?> page(
+            @RequestParam(defaultValue = "1") int page, // 조회할 페이지 번호
+            @RequestParam(defaultValue = "3") int size  // 조회 페이지에(1페이지당) 조회할 자료 총 갯수
+     ){
+        return ResponseEntity.ok( todoService.page( page,size) );
     }
 
 

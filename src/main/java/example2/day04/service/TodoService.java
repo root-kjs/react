@@ -7,6 +7,9 @@ import example2.day04.model.dto.TodoDto;
 import example2.day04.model.entity.TodoEntity;
 import example2.day04.model.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +48,7 @@ public class TodoService {
 
     }//func end
 
-    // 3.
+    // 3. like 검색
     public List<TodoDto> query3( String title ){
         List<TodoEntity> result1 = todoRepository.findByTitleContaining( title );
         System.out.println("result1 = " + result1);
@@ -55,6 +58,25 @@ public class TodoService {
 
         return result2.stream().map( TodoEntity::toDto).collect( Collectors.toList());
     }//func end
+
+    // 4. 페이징처리
+    // import org.springframework.data.domain.Page;
+    public Page<TodoDto> page( int page, int size){
+        // 1) 페이징 처리 옵션을 설정한다.
+        //PageRequest.of( 조회할페이지번호, 조회할페이지당데이터수, Sort.by( Sort.Direction.ASC, "정렬속성명(컬럼)") )
+        // PageRequest 객체로 저장
+        PageRequest pageRequest = PageRequest.of( page-1, size, Sort.by( Sort.Direction.DESC, "tno"));
+        // page - 1 : JPA는 페이지번호를 0부터 시작함으로 1페이지가 0이고, 2페이지가 1로 처리됨에 -1
+        // size : 현재 1페이지에 조회할 자료개수, 1페이지에 3개 개수
+
+        // 2) 조회한다. 페이지 타입으로 저장
+        // Page : 페이징 처리결과를 담는 인터페이스 타입, 다양한 페이징 결과를 제공한다.
+        Page<TodoEntity> result = todoRepository.findAll( pageRequest );
+
+        // 3) 조회결과 반환 : page 타입은 스트립을 기본적으로 제공한다. stream().map(TodoEntity::toDto); ---> X 안적어도 된다.
+        return result.map(TodoEntity::toDto);
+
+    }// func end
 
 
 } // class end
