@@ -9,6 +9,7 @@ import example2.day04.model.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,9 +73,28 @@ public class TodoService {
         // 2) 조회한다. 페이지 타입으로 저장
         // Page : 페이징 처리결과를 담는 인터페이스 타입, 다양한 페이징 결과를 제공한다.
         Page<TodoEntity> result = todoRepository.findAll( pageRequest );
+        // List<TodoEntity> result = (List<TodoEntity>) todoRepository.findAll( pageRequest );
 
         // 3) 조회결과 반환 : page 타입은 스트립을 기본적으로 제공한다. stream().map(TodoEntity::toDto); ---> X 안적어도 된다.
         return result.map(TodoEntity::toDto);
+
+    }// func end
+    
+    
+    // 검색결과 > 페이징 처리, Page 타입으로 가져온다. 
+    public Page<TodoDto> page2( String keyword, int page, int size){
+// 2. 검색이 있으면 검색조회( 먼저, 페이지 옵션 넣어준다. )
+        // Pageable ---> 이게 더 상위 개념 interface( 다형성) --> 상속을 받았거나 구현체 이거나 PageRequest--> 구현체
+        Pageable pageable =  PageRequest.of( page-1, size, Sort.by( Sort.Direction.DESC, "tno")); // 페이지 옵션
+        Page<TodoEntity> result;
+        // 1. 만약에 검색이 없으면 전체 조회
+        if( keyword == null || keyword.isBlank() ){ // 키워드가 널이거나 공백이면
+            result = todoRepository.findAll( pageable  ); // 전체 조회
+        }else {
+            result = todoRepository.findByTitleContaining( keyword, pageable );
+        }
+        // result  내 모든 자료들을 하나씩 toDto 함수를 호출하여 반환값들을 새로운 리스트에 반환한다.
+        return result.map( TodoEntity :: toDto );
 
     }// func end
 

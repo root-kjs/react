@@ -34,13 +34,22 @@ public class TodoController {
         return ResponseEntity.ok( todoService.query3(title));
     }
 
-    // 4. 페이징 처리
+    // 4. 페이징 처리(기본)
     @GetMapping("/page")
     public ResponseEntity<?> page(
             @RequestParam(defaultValue = "1") int page, // 조회할 페이지 번호
             @RequestParam(defaultValue = "3") int size  // 조회 페이지에(1페이지당) 조회할 자료 총 갯수
      ){
         return ResponseEntity.ok( todoService.page( page,size) );
+    }
+
+    // 5. 검색결과 페이징 처리
+    @GetMapping("/page2")
+    public ResponseEntity<?> page2( @RequestParam String keyword ,
+                                    @RequestParam int page,
+                                    @RequestParam int size
+                                    ){
+        return ResponseEntity.ok( todoService.page2( keyword, page, size));
     }
 
 
