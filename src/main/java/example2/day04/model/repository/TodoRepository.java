@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+//데이터 접근 계층(Data Access Layer, DAL)**의 클래스,
+// 즉 DAO(Data Access Object) 역할을 하는 빈(Bean)에 사용됩니다.
+// Bean 등록: 해당 클래스를 스프링 컨테이너에 **빈(Bean)**으로 등록하여, 다른 계층(서비스 등)에서 주입(@Autowired)받아 사용할 수 있게 합니다.
 @Repository
 public interface TodoRepository extends JpaRepository<TodoEntity, Integer> {
     // JPA Repository : 기본적으로 미리 만들어진 CRUD를 제공한다.
