@@ -22,5 +22,18 @@ public class TodoController {
         return ResponseEntity.ok( todoService.query1( title ));
     }
 
+    // 2. And 연산자
+    @GetMapping("/query2")
+    public ResponseEntity<?> query2(@RequestParam String title, @RequestParam String content){
+        return ResponseEntity.ok( todoService.query2( title, content));
+    }
+
+    // 32. like 연산자
+    @GetMapping("/query3")
+    public ResponseEntity<?> query3( @RequestParam String title ){
+        return ResponseEntity.ok( todoService.query3(title));
+    }
+
+
 
 }// class end
